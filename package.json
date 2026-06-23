@@ -1,7 +1,7 @@
 {
 	"name": "momo-backend",
 	"version": "1.0.0",
-	"description": "API para o momo-app",
+	"description": "API para o Momo App",
 	"author": "Bruno Fukumori",
 	"private": true,
 	"license": "MIT",

@@ -1,4 +1,5 @@
 import { envSchema } from "@infra/env/env";
+import { HealthModule } from "@infra/health/health.module";
 import { AuthModule } from "@modules/auth/auth.module";
 import { DailyLogModule } from "@modules/daily-logs/daily-log.module";
 import { UserModule } from "@modules/users/users.module";
@@ -21,6 +22,7 @@ import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 				},
 			],
 		}),
+		HealthModule,
 		UserModule,
 		AuthModule,
 		DailyLogModule,
