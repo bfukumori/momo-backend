@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.git
+.gitignore
+biome.json
+LICENSE
+*.md
+npm-debug.log
+.dockerignore
+Dockerfile
+src/infrastructure/prisma/generated

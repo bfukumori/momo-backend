@@ -1,0 +1,54 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "./generated"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String @id @default(uuid())
+  email       String @unique
+  name        String
+  password    String
+  totalPoints Int    @default(0)
+
+  targetWaterMl      Int @default(3000)
+  targetProteinGrams Int @default(120)
+
+  dailyLogs DailyLog[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("users")
+}
+
+model DailyLog {
+  id     String   @id @default(uuid())
+  userId String
+  date   DateTime
+
+  waterConsumedMl  Int @default(0)
+  proteinConsumedG Int @default(0)
+
+  medication     String?
+  tookMedication Boolean @default(false)
+  didExercise    Boolean @default(false)
+
+  weight            Float?
+  bodyFatPercentage Float?
+  muscleMass        Float?
+
+  sideEffects String?
+
+  pointsEarned Int @default(0)
+
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@map("daily_logs")
+}
