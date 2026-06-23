@@ -20,7 +20,6 @@ export const envSchema = z.object({
 			32,
 			"JWT_SECRET deve ser uma chave robusta de no mínimo 32 caracteres.",
 		),
-	FRONTEND_URL: z.url().default("http://10.0.2.2:3000"),
 });
 
 export type Env = z.infer<typeof envSchema>;
